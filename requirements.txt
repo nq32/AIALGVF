@@ -1,0 +1,17 @@
+# Core libraries
+roboflow
+opencv-python
+matplotlib
+numpy
+
+# Machine Learning and Deep Learning
+torch            # Will install CPU version unless you install GPU manually
+ultralytics      # YOLOv8 framework (includes PyTorch + other deps)
+
+# Optional for classification/regression models
+scikit-learn
+pandas
+
+# Optional visualization/debugging
+seaborn
+jupyter

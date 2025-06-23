@@ -1,0 +1,23 @@
+# Ignore virtual environment directory
+venv/
+
+# Ignore Roboflow or other downloaded datasets
+dataset/
+
+# Ignore training output directories
+runs/
+
+# Ignore Python cache files and directories
+__pycache__/
+*.pyc   # Compiled Python files
+*.pyo   # Optimized Python files
+*.pyd   # Windows DLL files for Python
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore YOLOv8 model weights
+yolov8n.pt
