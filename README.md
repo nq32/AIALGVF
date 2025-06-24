@@ -1,45 +1,49 @@
 # Lettuce Growth AI for Vertical Farming
 
-This project aims to develop an Artificial Intelligence system to support lettuce growth optimization in vertical farming environments. The AI components focus on detecting diseases, classifying growth stages, and predicting yield using image data and features.
+This project develops AI tools to optimize lettuce growth in vertical farming environments. It leverages computer vision and machine learning for disease detection, growth stage classification, yield prediction, and health status classification using image data.
 
 ---
 
 ## Project Overview
 
-Vertical farming offers efficient, sustainable food production. This project applies computer vision and machine learning techniques to analyze lettuce images and relevant features, enabling:
-
-- **Disease Detection:** Identify common diseases on lettuce leaves using object detection models.
-- **Growth Stage Classification:** Classify lettuce plants into different growth stages using deep learning image classification.
-- **Yield Prediction:** Estimate the expected lettuce yield based on environmental and growth features using machine learning regression.
+- **Disease Detection:** Identify common diseases on lettuce leaves using object detection (YOLOv8).
+- **Growth Stage Classification:** Classify lettuce plants into growth stages with deep learning.
+- **Yield Prediction:** Estimate expected lettuce yield from environmental and growth features.
+- **Health Status Classification:** Classify lettuce as healthy or unhealthy using deep learning models trained on Kaggle and Roboflow datasets.
 
 ---
 
 ## Current Components
 
-### 1. Dataset Setup (`dataset_setup.py`)
+### 1. Dataset Setup (`kaggle_dataset_setup.py`, `roboflow_dataset_setup.py`)
 
-- Downloads the latest lettuce image dataset from Roboflow.
-- Prepares the dataset in YOLOv8 format for training.
-- Displays a sample image for quick verification.
+- Downloads and prepares lettuce image datasets from Kaggle and Roboflow.
+- Preserves original folder structures and ignores unsupported file types.
 
-### 2. Disease Detection (`detect_disease.py`)
+### 2. Disease Detection (`kaggle_detect_disease.py`, `roboflow_detect_disease.py`)
 
 - Trains a YOLOv8 model to detect diseases on lettuce leaves.
-- Runs inference on validation images and saves output visualizations.
+- Runs inference and saves output visualizations.
 
 ### 3. Growth Stage Classification (`stage_classifier.py`)
 
-- Uses a pretrained ResNet18 model fine-tuned on labeled growth stage images.
-- Classifies images into growth stages with a training loop and loss reporting.
+- Fine-tunes a ResNet18 model on labeled growth stage images.
+- Classifies images into growth stages.
 
 ### 4. Yield Prediction (`yield_prediction.py`)
 
-- Trains a Random Forest regression model on tabular feature data to predict lettuce yield.
-- Reports Mean Absolute Error (MAE) to measure prediction accuracy.
+- Trains a Random Forest regression model on tabular data to predict lettuce yield.
+- Reports Mean Absolute Error (MAE).
 
-### 5. Model Training (`train_yolo.py`)
+### 5. Health Status Classification (`kaggle_detect_status.py`, `test.py`)
 
-- Provides a simple script to train the YOLOv8 model with configurable parameters such as epochs, batch size, and image size.
+- Trains a MobileNetV2-based classifier to distinguish healthy vs. unhealthy lettuce using images from nested folders.
+- Supports custom folder structures.
+- Evaluates the trained model on new datasets (e.g., Roboflow) and outputs predictions and scores to a CSV file.
+
+### 6. Model Training (`train_yolo.py`)
+
+- Script to train the YOLOv8 model with configurable parameters.
 
 ---
 
@@ -50,12 +54,9 @@ Vertical farming offers efficient, sustainable food production. This project app
    ```bash
    git clone <repository_url>
    cd <repository_folder>
-
    ```
 
 2. **Setup Python environment**
-
-   Create a virtual environment and install dependencies:
 
    ```bash
    python -m venv venv
@@ -64,29 +65,41 @@ Vertical farming offers efficient, sustainable food production. This project app
    ```
 
 3. **Run dataset setup**
-   Execute the dataset setup script to download and prepare the dataset:
 
    ```bash
-   python dataset_setup.py
+   python kaggle_scripts/kaggle_dataset_setup.py
+   python roboflow_scripts/roboflow_dataset_setup.py
    ```
 
 4. **Train models and run inference**
-   - For disease detection:
+
+   - Disease detection:
      ```bash
      python detect_disease.py
      ```
-   - For growth stage classification:
+   - Growth stage classification:
      ```bash
      python stage_classifier.py
      ```
-   - For yield prediction:
+   - Yield prediction:
      ```bash
      python yield_prediction.py
      ```
+   - Health status classification:
+     ```bash
+     python kaggle_scripts/kaggle_detect_status.py
+     ```
+   - Test health classifier on new images:
+     ```bash
+     python test.py
+     ```
+
+---
 
 ## Dependencies
 
 - Python 3.8+
+- TensorFlow
 - PyTorch
 - torchvision
 - ultralytics (for YOLOv8)
@@ -94,15 +107,20 @@ Vertical farming offers efficient, sustainable food production. This project app
 - OpenCV
 - matplotlib
 - Roboflow Python package
+- kagglehub
+
+---
 
 ## Future Work
 
 - Improve dataset quality and size.
 - Integrate environmental sensor data for more accurate yield prediction.
-- Develop real-time monitoring with camera feeds.
+- Real-time monitoring with camera feeds.
 - Explore additional ML models and hyperparameter tuning.
 - Deploy models to edge devices for on-site vertical farm monitoring.
 
+---
+
 ## Contact
 
-For questions or contributions, please contact me at [joshuajones272000@gmail.com]
+For questions or contributions, please contact [joshuajones272000@gmail.com]
